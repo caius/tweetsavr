@@ -3,6 +3,9 @@ class ViewTweets
     set :root, ViewTweets.root
 
     get "/" do
+      if params[:tweet]
+        redirect to("/#{params[:tweet]}")
+      end
       erb :index
     end
 
