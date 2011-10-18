@@ -1,5 +1,6 @@
 class ViewTweets
   class App < Sinatra::Base
+    set :root, ViewTweets.root
 
     get "/" do
       erb :index
