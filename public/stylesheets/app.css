@@ -19,12 +19,12 @@ h2 {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-#header {
+header {
   margin: 30px 0 0 0;
   text-align: center;
 }
 
-  #header h1 {
+  header h1 {
     font-size: 1.8em;
     font-weight: normal;
     margin: 0 0 3px 0;
@@ -87,3 +87,9 @@ h2 {
     .tweet .meta .source a {
       font-weight: normal;
     }
+
+footer {
+  margin-top: 2em;
+  padding-bottom: 1em;
+  text-align: center;
+}
