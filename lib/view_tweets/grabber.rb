@@ -1,3 +1,5 @@
+require "time"
+
 class ViewTweets
   class Grabber
     attr_accessor :starting_id
@@ -26,6 +28,7 @@ class ViewTweets
       end
 
       if t
+        t.created_at = Time.parse(t.created_at)
         self.tweets << t
         get_tweets
       end
