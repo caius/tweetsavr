@@ -9,12 +9,8 @@ It has pretty much two design goals:
 
 ## TODO
 
-* Save the tweet conversations somewhere
-	* render it out as static file?
-	* Save in DB? SQlite using Sequel?
 * Error handling
 * Parse tweet id from URL given in form
-* Prettification
 * Ability to mark conversation private - generates UUID to use as convo identifier?
 
 ## LICENCE
