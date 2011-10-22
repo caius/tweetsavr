@@ -13,6 +13,6 @@ class ViewTweets
   end
 end
 
-%w(app grabber).each do |file|
+%w(core_ext/array_to_sentence app grabber).each do |file|
   require "#{ViewTweets.lib}/view_tweets/#{file}"
 end
