@@ -36,7 +36,7 @@ header {
 
 .tweet {
   list-style-type: none;
-  font-family: "Helvetica Neue", Helvetica, serif;
+  font-family: "Helvetica Neue", Helvetica, "Arial Geneva", sans-serif;
   font-size: 1.5em;
   background: white;
   padding-top: 1em;
@@ -68,10 +68,22 @@ header {
 
   .tweet .body {
     margin-bottom: 1em;
+    padding-left: 0.5em;
+    line-height: 1.2em;
   }
+
+    .tweet .body a {
+      font-weight: normal;
+    }
+
+    .tweet .body em.hashtag {
+      color: #999;
+      font-style: normal;
+    }
 
   .tweet .meta {
     font-size: 0.75em;
+    padding-left: 0.5em;
   }
 
     .tweet .meta,

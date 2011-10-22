@@ -29,10 +29,18 @@ class ViewTweets
       end
 
       if t
-        t["created_at"] = Time.parse(t["created_at"])
+        tweak_tweet(t) # Fuck yeah, pass by reference
         self.tweets << t
         get_tweets
       end
+    end
+
+    def tweak_tweet t
+      t["created_at"] = Time.parse(t["created_at"])
+      # Turn @foo into link to twitter.com/foo
+      t["text"].gsub!(/(^|\W)@(\w+)/, %{\\1<a href="https://twitter.com/#!/\\2">@\\2</a>})
+      # Turn #foo into <span class="hashtag">#foo</span>
+      t["text"].gsub!(/(^|\W)(#\w+)/, %{\\1<em class="hashtag">\\2</em>})
     end
 
     def get_tweet id
