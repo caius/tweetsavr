@@ -11,7 +11,7 @@ class ViewTweets
 
     get "/:status_id" do |status_id|
       @tweets = Grabber.new(status_id).ordered_tweets
-      @users = @tweets.map {|x| x.user.screen_name }.uniq
+      @users = @tweets.map {|x| x["user"]["screen_name"] }.uniq
       @title = "#{@users.map {|n| "@#{n}" }.to_sentence} in conversation - View Tweets"
       @header = "Conversation between #{@users.map {|u| %{<a href="#{profile_url(u)}">@#{u}</a>} }.to_sentence}"
       erb :tweets

@@ -3,25 +3,25 @@
     <li class="tweet tweet-<%= i %> grid_8">
       <div class="author grid_8">
         <div class="grid_1">
-          <img src="<%= tweet.user.profile_image_url %>" />
+          <img src="<%= tweet["user"]["profile_image_url"] %>" />
         </div>
         <div class="grid_6 offset_2">
-          <a class="handle" href="<%= profile_url tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a>
+          <a class="handle" href="<%= profile_url tweet["user"]["screen_name"] %>">@<%= tweet["user"]["screen_name"] %></a>
         </div>
         <div class="grid_6 offset_2">
-          <span class="name"><%= tweet.user.name %></span>
+          <span class="name"><%= tweet["user"]["name"] %></span>
         </div>
       </div>
 
       <div class="body grid_8">
-        <p><%= tweet.text %></p>
+        <p><%= tweet["text"] %></p>
       </div>
 
       <div class="meta grid_8">
-        <a href="<%= status_url tweet.user.screen_name, tweet.id_str %>">
-          <time datetime="<%= tweet.created_at.iso8601 %>"><%= display_date(tweet.created_at) %></time>
+        <a href="<%= status_url tweet["user"]["screen_name"], tweet["id_str"] %>">
+          <time datetime="<%= tweet["created_at"].iso8601 %>"><%= display_date(tweet["created_at"]) %></time>
         </a>
-        via <span class="source"><%= tweet.source %></span>
+        via <span class="source"><%= tweet["source"] %></span>
       </div>
     </li>
   <% end %>
