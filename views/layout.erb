@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title %> - View Tweet Conversations</title>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/960.css" /> 
+    <link rel="stylesheet" type="text/css" href="stylesheets/app.css" />
+  </head>
+
+  <body>
+    <header id="header">
+      <h1>
+        <%= @header %>
+      </h1>
+    </header>
+
+    <div class="container_12">
+      <section id="main" class="grid_8 push_2">
+
+        <%= yield %>
+
+      </section><!-- .grid_8.push_2 -->
+
+    </div><!-- .container_12 -->
+    <!-- Many thanks to linkcatch.com for the initial design -->
+  </body>
+</html>
