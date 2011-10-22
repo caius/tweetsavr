@@ -3,9 +3,8 @@ class ViewTweets
     set :root, ViewTweets.root
 
     get "/" do
-      redirect to("/#{params[:tweet]}") if params[:tweet]
       @title = "View Tweets"
-      @header = "Enter last tweet in conversation"
+      @header = "View Tweets in a Conversation"
       erb :index
     end
 
