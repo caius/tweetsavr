@@ -31,7 +31,13 @@ class ViewTweets
 
       def display_date time
         # todo: make this say x minutes/hours ago up to the next day, then display "day month"
-        time.strftime("%d %b")
+        str = if time.year < Time.now.year
+          "%d %b '%y"
+        else
+          "%d %b"
+        end
+
+        time.strftime str
       end
     end
 
