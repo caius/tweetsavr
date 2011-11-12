@@ -76,6 +76,14 @@ header {
       font-weight: normal;
     }
 
+    .tweet .body p {
+      margin-top: 1.2em;
+    }
+
+    .tweet .body p:first-child {
+      margin-top: 0;
+    }
+
     .tweet .body em.hashtag {
       color: #999;
       font-style: normal;
