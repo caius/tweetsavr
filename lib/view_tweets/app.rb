@@ -21,6 +21,9 @@ class ViewTweets
     end
 
     helpers do
+      include ActionView::Helpers::TextHelper
+      include ActionView::Helpers::TagHelper
+
       def profile_url screen_name
         "https://twitter.com/#!/#{screen_name}"
       end
