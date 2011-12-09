@@ -3,10 +3,10 @@ require "yaml"
 
 class ViewTweets
   class Grabber
-    attr_accessor :starting_id
+    attr_accessor :tweet_ids, :tweets
 
-    def initialize starting_id
-      self.starting_id = starting_id
+    def initialize ids
+      self.tweet_ids = Array(ids)
       get_tweets
     end
 
@@ -14,62 +14,8 @@ class ViewTweets
       @tweets ||= []
     end
 
-    def ordered_tweets
-      tweets.reverse
-    end
-
-  protected
-
     def get_tweets
-      t = if tweets.empty?
-        get_tweet(starting_id)
-      else
-        last_id = tweets.last["in_reply_to_status_id_str"].to_i
-        get_tweet(last_id) if last_id && last_id != 0
-      end
-
-      if t
-        tweak_tweet(t) # Fuck yeah, pass by reference
-        self.tweets << t
-        get_tweets
-      end
+      self.tweets = tweet_ids.map {|id| GrabReplyChain.for(id) }.flatten.sort_by {|t| t["created_at"] }
     end
-
-    def tweak_tweet t
-      t["created_at"] = Time.parse(t["created_at"])
-      # Turn @foo into link to twitter.com/foo
-      t["text"].gsub!(/(^|\W)@(\w+)/, %{\\1<a href="https://twitter.com/#!/\\2">@\\2</a>})
-      # Turn #foo into <span class="hashtag">#foo</span>
-      t["text"].gsub!(/(^|\W)(#\w+)/, %{\\1<em class="hashtag">\\2</em>})
-    end
-
-    def get_tweet id
-      if cached?(id) && (( t = load_from_cache(id) ))
-        t
-      else
-        t = Twitter.status(id).to_hash
-        cache_tweet!(t)
-        t
-      end
-    end
-
-    def cache_path id
-      ViewTweets.root + "cache/#{id}.yml"
-    end
-
-    def cached? id
-      File.exists? cache_path(id)
-    end
-
-    def cache_tweet! tweet
-      File.open(cache_path(tweet["id_str"]), "w+") do |f|
-        f.print tweet.to_yaml
-      end
-    end
-
-    def load_from_cache id
-      YAML.load_file(cache_path(id))
-    end
-
   end
 end

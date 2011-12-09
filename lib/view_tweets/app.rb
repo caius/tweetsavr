@@ -9,11 +9,11 @@ class ViewTweets
     end
 
     get %r{/(.*)$} do |status_id|
-      if status_id.to_i.to_s != status_id
+      if !status_id[/^[\d,]+$/] && status_id.to_i.to_s != status_id
         extracted_id = status_id[%r{/(\d+)/?}, 1]
         redirect to("/#{extracted_id}")
       end
-      @tweets = Grabber.new(status_id).ordered_tweets
+      @tweets = Grabber.new(status_id.split(",")).tweets
       @users = @tweets.map {|x| x["user"]["screen_name"] }.uniq
       @title = "#{@users.map {|n| "@#{n}" }.to_sentence} in conversation"
       @header = "Conversation between #{@users.map {|u| %{<a href="#{profile_url(u)}">@#{u}</a>} }.to_sentence}"
