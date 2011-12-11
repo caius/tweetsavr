@@ -1,3 +1,11 @@
+<script type="application/javascript">
+  // Check if there's a tweet id in the hash, probably like "#!/caius/status/1234566" from new twitter
+  var possible_id = location.hash.match(/\/\d+$/)[0];
+  if (possible_id) {
+    location = possible_id;
+  }
+</script>
+
 <p>This is a little app to let you view a twitter conversation in one place and permalink it for the future.</p>
 
 <p>It intentionally doesn't do much. Give it the last tweet id in a conversation and it walks up the tree figuring out the conversation, then saves that for the future. For more information, read the <a href="http://caiustheory.com/tweetsavr">introduction blog post</a>.</p>
