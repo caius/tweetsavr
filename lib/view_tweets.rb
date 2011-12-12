@@ -2,6 +2,9 @@ require "rubygems"
 require "bundler/setup"
 require "pathname"
 
+# We do don't no stinking dev here
+ENV["RACK_ENV"] = "production"
+
 Bundler.require :default
 
 class ViewTweets

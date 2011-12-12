@@ -2,3 +2,4 @@ cache/
 !vendor/cache
 tmp/
 log/
+config/newrelic.yml

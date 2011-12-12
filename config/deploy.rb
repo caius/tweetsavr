@@ -26,7 +26,7 @@ default_run_options[:pty] = true
 
 set :use_sudo, false
 
-set :local_shared_files, []
+set :local_shared_files, %w(config/newrelic.yml)
 set :local_shared_dirs, %w(cache)
 
 set :global_shared_files, []
