@@ -14,8 +14,16 @@ class ViewTweets
       @tweets ||= []
     end
 
+    # def tweets= t
+      # ids = t.map(&:tweet_id)
+    # end
+
     def get_tweets
-      self.tweets = tweet_ids.map {|id| GrabReplyChain.for(id) }.flatten.sort_by {|t| t["created_at"] }
+      self.tweets = tweet_ids.map {|id| GrabReplyChain.for(id) }.flatten.reduce({}) {|h, t|
+        t_id = t["id"]
+        h[t_id] = t unless h.has_key?(t_id)
+        h
+      }.values.sort_by {|t| t["created_at"] }
     end
   end
 end
