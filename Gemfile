@@ -8,4 +8,5 @@ gem "hashie"
 
 group :development do
   gem "shotgun"
+  gem "capistrano"
 end
