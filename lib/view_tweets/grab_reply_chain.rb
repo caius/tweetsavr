@@ -35,7 +35,7 @@ protected
     if cached?(id) && (( t = load_from_cache(id) ))
       t
     else
-      t = Twitter.status(id).to_hash
+      t = Twitter.status(id, :include_entities => true).to_hash
       cache_tweet!(t)
       t
     end
@@ -47,6 +47,14 @@ protected
     t["text"].gsub!(/(^|\W)@(\w+)/, %{\\1<a href="https://twitter.com/#!/\\2">@\\2</a>})
     # Turn #foo into <span class="hashtag">#foo</span>
     t["text"].gsub!(/(^|\W)(#\w+)/, %{\\1<em class="hashtag">\\2</em>})
+    # todo: check for & hypertextize links
+    if t["entities"] && !t["entities"]["urls"].empty?
+      urls = t["entities"]["urls"]
+      urls.each do |u|
+        t["text"].sub! u["url"], %{<a href="#{u["url"]}">#{u["expanded_url"]}</a>}
+      end
+    end
+    t["text"]
   end
 
   def cache_path id
