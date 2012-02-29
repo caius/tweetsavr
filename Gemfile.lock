@@ -68,6 +68,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack
+  hashie
   newrelic_rpm
   shotgun
   sinatra
