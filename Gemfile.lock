@@ -20,7 +20,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.6)
     builder (3.0.0)
-    capistrano (2.11.2)
+    capistrano (2.9.0)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -83,7 +83,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack
-  capistrano
+  capistrano (= 2.9.0)
   hashie
   newrelic_rpm
   rake (= 0.8.7)

@@ -9,5 +9,5 @@ gem "rake", "0.8.7"
 
 group :development do
   gem "shotgun"
-  gem "capistrano"
+  gem "capistrano", "2.9.0"
 end
