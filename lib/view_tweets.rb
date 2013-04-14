@@ -27,6 +27,6 @@ end
 # Setup twitter auth
 ViewTweets.setup_twitter(YAML.load(ViewTweets.root.join("config/twitter.yml").read))
 
-%w(core_ext/array_to_sentence app grab_reply_chain grabber).each do |file|
+%w(core_ext/array_to_sentence core_ext/deep_stringify_keys app grab_reply_chain grabber).each do |file|
   require "#{ViewTweets.lib}/view_tweets/#{file}"
 end

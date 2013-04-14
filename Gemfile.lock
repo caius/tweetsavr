@@ -46,6 +46,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack
+  activesupport
   capistrano (= 2.9.0)
   hashie
   newrelic_rpm
