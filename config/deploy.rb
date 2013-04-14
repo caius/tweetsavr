@@ -5,11 +5,11 @@ set :application, "tweetsavr"
 set :domain, "tweetsavr.com"
 
 ## List of servers
-server "tweetsavr.com", :app, :web, :db, :primary => true
+server "nonus.vm.caius.name", :app, :web, :db, :primary => true
 
 # Target directory for the application on the web and app servers.
 set(:deploy_to) { File.join("", "home", user, "apps", application) }
-set :user, "rails"
+set :user, "caius"
 
 # Repo details
 set :repository, "git://github.com/caius/tweetsavr.git"
