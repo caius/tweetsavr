@@ -1,5 +1,4 @@
-cache/
-!vendor/cache
+/cache
 tmp/
 log/
-config/newrelic.yml
+config/*.yml
