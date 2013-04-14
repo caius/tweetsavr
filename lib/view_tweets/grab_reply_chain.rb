@@ -35,7 +35,7 @@ protected
     if cached?(id) && (( t = load_from_cache(id) ))
       t
     else
-      t = Twitter.status(id, :include_entities => true).to_hash
+      t = Twitter.status(id, :include_entities => true).to_hash.deep_stringify_keys
       cache_tweet!(t)
       t
     end
