@@ -4,7 +4,6 @@ gem "sinatra", :require => "sinatra/base"
 gem "actionpack", :require => "action_view"
 gem "activesupport", require: "active_support/core_ext/hash/keys"
 gem "twitter"
-gem "newrelic_rpm"
 gem "hashie"
 gem "rake"
 
