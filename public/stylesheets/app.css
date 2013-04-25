@@ -30,8 +30,24 @@ header {
     margin: 0 0 3px 0;
   }
 
-#main {
-  margin-top: 2em;
+#tweets {
+  margin-top: 3em;
+}
+
+#home p {
+  margin: 1em 0;
+  font-size: 1.3em;
+  line-height: 1.4em;
+}
+
+#home .tagline {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2em;
+  position: relative;
+  top: -1em;
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
 
 .tweet {
