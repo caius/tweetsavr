@@ -51,6 +51,8 @@ protected
     if t["entities"] && !t["entities"]["urls"].empty?
       urls = t["entities"]["urls"]
       urls.each do |u|
+        u.stringify_keys!
+        next unless u["url"]
         t["text"].sub! u["url"], %{<a href="#{u["url"]}">#{u["expanded_url"]}</a>}
       end
     end
